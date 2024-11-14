@@ -1,0 +1,16 @@
+#!/bin/sh
+@echo off
+:: Ejecuta el archivo backup.bat
+call "%~dp0../../backup.bat"
+
+:: Verificar si el backup se creó correctamente
+if %errorlevel% neq 0 (
+    echo Error: No se pudo crear el backup.
+    exit /b 1
+)
+
+:: Agregar el archivo de backup al área de preparación de Git
+git add backup_*.sql
+
+:: Mensaje de confirmación
+echo Backup añadido al commit.
