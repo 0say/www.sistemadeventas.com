@@ -1,0 +1,26 @@
+name: Run Backup Script
+
+on:
+  push:
+    branches:
+      - main  # Puedes cambiar a la rama que prefieras
+
+jobs:
+  backup:
+    runs-on: windows-latest
+
+    steps:
+      # Step 1: Checkout del repositorio
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Step 2: Descargar el archivo .bat si está en el repositorio
+      - name: Copy backup.bat to workspace
+        run: |
+          copy .\path\to\uploaded\backup.bat .\backup.bat
+
+      # Step 3: Ejecutar el archivo .bat
+      - name: Execute backup.bat
+        run: |
+          .\backup.bat
+        shell: cmd
