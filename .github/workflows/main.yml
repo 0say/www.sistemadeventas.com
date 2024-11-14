@@ -1,0 +1,22 @@
+name: Run Backup Script
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Permite ejecución manual
+
+jobs:
+  backup:
+    runs-on: windows-latest
+
+    steps:
+      # Step 1: Checkout del repositorio
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Step 2: Ejecutar el archivo .bat
+      - name: Execute backup.bat
+        run: |
+          .\backup.bat
+        shell: cmd
