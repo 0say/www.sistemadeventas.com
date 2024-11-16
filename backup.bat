@@ -1,7 +1,7 @@
 @echo off
 :: Configuración de la base de datos
 set DB_HOST=localhost
-set DB_PORT=3307
+set DB_PORT=3306
 set DB_USER=root
 set DB_PASS=
 set DB_NAME=sistemadeventas
