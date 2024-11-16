@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="../public/templates/AdminLTE-3.2.0/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../public/templates/AdminLTE-3.2.0/dist/css/adminlte.min.css">
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -22,6 +24,33 @@
 </center>
 <br/>
   <!-- /.login-logo -->
+ <?php 
+ session_start();
+if( isset($_SESSION['mensaje']) ) 
+{
+  session_destroy();
+  $respuesta = $_SESSION['mensaje']; ?>
+  <script>
+  Swal.fire({
+  position: "center",
+  icon: "error",
+  title: "<?php echo $respuesta; ?>",
+  showConfirmButton: false,
+  timer: 1500
+});
+  </script>
+  
+  <?php
+
+
+
+}
+
+ ?>
+
+
+
+
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
       <a href="../public/templates/AdminLTE-3.2.0/index2.html" class="h1"><b>Ventas </b>Contables</a>
@@ -29,9 +58,9 @@
     <div class="card-body">
       <p class="login-box-msg">Ingrese sus datos</p>
 
-      <form action="../public/templates/AdminLTE-3.2.0/index3.html" method="post">
+      <form action="../app/controllers/login/ingreso.php" method="post">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="email" name="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -39,7 +68,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" name="password_user" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
