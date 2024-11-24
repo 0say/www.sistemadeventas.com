@@ -22,3 +22,7 @@ try {
 }
 
 $URL = "http://localhost/www.sistemadeventas.com";
+
+
+date_default_timezone_set('America/Santo_Domingo');
+$fechaHora = date('Y-m-d H:i:s');
